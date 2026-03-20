@@ -1,4 +1,8 @@
-let cart = []; // this is our empty array for the items
+
+
+// Create an empty array called shoppingList.
+
+let shoppingList = []; // this is our empty array for the items
 
 // Caching items from the HTML
 let itemInput = document.getElementById("itemInput");
@@ -8,14 +12,31 @@ let cartList = document.getElementById("cart");
 
 // Our button fuctionalities
 
+// Write a function called addItem that takes an item as a parameter and adds it to the shoppingList array.
+
+function addItem(item)
+if (shoppingList.includes(iten)); {
+    shoppingList.push(item);
+    displayList(); //log console
+    renderCart();   // update web
+} else {
+    console.log("item already exists");
+}
 
 
-funct
+
+function removeLastitem() {
+    shoppingList.pop();
+    displayList();
+    renderCart();
+
+}
 
 
+function displayList() {
+    console.log("current shopping list", shoppingList);
 
-
-
+}
 
 
 
@@ -28,30 +49,26 @@ addItemButton.addEventListener("click", function () {
         return;
     }
 
-    cart.push(item); // Add item to cart array
-    renderCart();
-    itemInput.value = ""; // Clear the input field
 });
 
 removeItemButton.addEventListener("click", function () {
 
     // if the cart is empty, send an alert
-    if (cart.length === 0) {
-        alert("Cart is empty. No items to remove");
+    if (shoppingList.length === 0) {
+        alert("Cart is empty.");
         return;
     };
 
 
-    cart.pop(); // Remove last item from cart array
-    renderCart();
+    removeLastitem();
 });
 
 // This function recreates the "shopping cart" every time an item is added or removed
 function renderCart() {
-    cartList.innerHTML = ""; // Clear existing list
-    for (let i = 0; i < cart.length; i++) {
+    cartList.innerHTML = "";
+    shoppingList.forEach(item => {   // Clear existing list
         let listItem = document.createElement("li");
-        listItem.innerText = cart[i];
+        listItem.innerText = item;
         cartList.appendChild(listItem);
-    }
+    });
 }
